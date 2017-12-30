@@ -6,14 +6,18 @@ import edu.kim.kyo.tasksim.schedulealgo.ScheduleAlgo;
  * @author rick
  * Super-class
  */
-public class Scheduler {
+public class Simulator {
 	private ScheduleAlgo algo;
+	private int time;
 	
-	public Scheduler(ScheduleAlgo sa) {
+	public Simulator(ScheduleAlgo sa) {
 		algo = sa;
 	}
 	
-	public getNextTask() {
+	/**
+	 * Outputs the task that ran on the timestep
+	 * */
+	public void increaseTimeStep() {
 		algo.getNextTask();
 	}
 		

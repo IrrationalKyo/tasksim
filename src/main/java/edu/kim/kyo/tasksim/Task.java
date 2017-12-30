@@ -9,32 +9,35 @@ package edu.kim.kyo.tasksim;
 public class Task {
 
 	private final int offset;
-	private final int maxExecutionTime;
-	private final int minExecutionTime;
+	private final int executionTime;
 	private final int priority;
 	private final int period;
 	private final int id;
+	private int relativeDeadline;
+	private int workRemaining;
 	
 	public Task(int id, int priority, int period, int executionTime, int offset) {
-		this(id,priority,period,executionTime,executionTime,offset);
-	}
-	
-	public Task(int id, int priority, int period, int maxExecutionTime, int minExecutionTime, int offset) {
 		this.id = id;
 		this.priority = priority;
 		this.period = period;
-		this.maxExecutionTime = maxExecutionTime;
-		this.minExecutionTime = minExecutionTime;
+		this.executionTime = executionTime;
 		this.offset = offset;
 	}
 	
+	public int doSingleWork() {
+		workRemaining--;
+		return workRemaining;
+	}
+	public void resetWork() {
+		workRemaining = executionTime;
+	}
 	
 	public int getOffset() {
 		return offset;
 	}
 
 	public int getExecutionTime() {
-		return maxExecutionTime;
+		return executionTime;
 	}
 
 	public int getPriority() {
@@ -45,18 +48,15 @@ public class Task {
 		return period;
 	}
 
-
-	public int getMaxExecutionTime() {
-		return maxExecutionTime;
-	}
-
-
-	public int getMinExecutionTime() {
-		return minExecutionTime;
-	}
-
-
 	public int getId() {
 		return id;
+	}
+	
+	public int getRelativeDeadline() {
+		return relativeDeadline;
+	}
+
+	public int getWorkRemaining() {
+		return workRemaining;
 	}
 }
