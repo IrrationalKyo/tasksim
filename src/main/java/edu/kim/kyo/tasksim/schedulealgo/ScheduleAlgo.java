@@ -1,6 +1,8 @@
 package edu.kim.kyo.tasksim.schedulealgo;
 
 import edu.kim.kyo.tasksim.Task;
+import edu.kim.kyo.tasksim.TaskDoesNotExistException;
+import edu.kim.kyo.tasksim.TaskOverloadException;
 
 /**
  * @author Kyo
@@ -9,9 +11,8 @@ import edu.kim.kyo.tasksim.Task;
  */
 public abstract class ScheduleAlgo {
 	
-	abstract public Task getCurrentTask();
-	abstract public void incrementTime();
+	abstract public Task pickTask();
+	abstract public int incrementTime() throws TaskOverloadException, TaskDoesNotExistException;
 	abstract public boolean isSchedulable();
 	abstract public void reset();
-	abstract public int getTime();
 }
