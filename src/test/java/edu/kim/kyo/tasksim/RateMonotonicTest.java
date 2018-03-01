@@ -72,7 +72,7 @@ public class RateMonotonicTest{
     @Test
     public void checkDataset1()
     {
-		LinkedList<Integer> trace2 = oldFormatParser("dataset_new_det_1.txt");
+		LinkedList<Integer> trace2 = oldFormatParser("dataset_det_1.txt");
     	TaskSet ts = new TaskSet(15);
 		ts.addTask(new Task(1, 6, 670, 14, 353));
 		ts.addTask(new Task(2, 13, 330, 20, 36));
@@ -89,8 +89,8 @@ public class RateMonotonicTest{
 		ts.addTask(new Task(13, 10, 520, 11, 101));
 		ts.addTask(new Task(14, 2, 930, 52, 928));
 		ts.addTask(new Task(15, 7, 630, 2, 220));
-		
-		Simulator sim = new Simulator(new RateMonotonic(ts),trace2.size());
+		System.out.println(ts.getUtilFactor());
+		Simulator sim = new Simulator(new RateMonotonic(ts),100000);
 		try{
 			sim.run();
 		}catch(TaskOverloadException e) {
@@ -117,7 +117,7 @@ public class RateMonotonicTest{
     @Test
     public void checkDataset2()
     {
-		LinkedList<Integer> trace2 = oldFormatParser("dataset_new_det_2.txt");
+		LinkedList<Integer> trace2 = oldFormatParser("dataset_det_2.txt");
     	TaskSet ts = new TaskSet(15);
 		ts.addTask(new Task(12, 1, 980, 51, 600));
 		ts.addTask(new Task(6, 2, 970, 41, 935));
@@ -135,7 +135,8 @@ public class RateMonotonicTest{
 		ts.addTask(new Task(1, 14, 180, 14, 40));
 		ts.addTask(new Task(8, 15, 110, 8, 59));
 		
-		Simulator sim = new Simulator(new RateMonotonic(ts),trace2.size());
+		System.out.println(ts.getUtilFactor());
+		Simulator sim = new Simulator(new RateMonotonic(ts),100000);
 		try{
 			sim.run();
 		}catch(TaskOverloadException e) {
@@ -145,8 +146,8 @@ public class RateMonotonicTest{
 		}
 		
 		LinkedList<Integer> trace = sim.getTrace();
-		System.out.println(trace.toString());
-		System.out.println(trace2.toString());
+//		System.out.println(trace.toString());
+//		System.out.println(trace2.toString());
 
 		for(int i = 0; i < trace.size(); i++) {
 			if(!trace.get(i).equals(trace2.get(i))) {

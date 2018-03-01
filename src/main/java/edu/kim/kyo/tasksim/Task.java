@@ -58,6 +58,10 @@ public class Task {
 
 	};
 	
+	public double getUtilFactor() {
+		return (double) executionTime/period;
+	}
+	
 	public int getOffset() {
 		return offset;
 	}
@@ -90,11 +94,11 @@ public class Task {
 	public String toString() {
 		String output = "";
 		output+= "Id:" + Integer.toString(id);
-		output+= "\tPri:" + Integer.toString(priority);
-		output+= "\tPer:" + Integer.toString(period);
-		output+= "\tWorkRem:" + Integer.toString(workRemaining);
-		output+= "\tExeTime:" + Integer.toString(executionTime);
-		output+= "\tOffset:" + Integer.toString(offset);
+		output+= " Pri:" + Integer.toString(priority);
+		output+= " Per:" + Integer.toString(period);
+		output+= " WorkRem:" + Integer.toString(workRemaining);
+		output+= " ExeTime:" + Integer.toString(executionTime);
+		output+= " Offset:" + Integer.toString(offset);
 		output+= "\n";
 		return output;
 

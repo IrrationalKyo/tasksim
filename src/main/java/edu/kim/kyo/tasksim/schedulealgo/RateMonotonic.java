@@ -12,10 +12,6 @@ public class RateMonotonic extends ScheduleAlgo{
 	private int time;
 	private TaskSet set;
 	
-	public RateMonotonic() {
-		this(null);
-	}
-	
 	public RateMonotonic(TaskSet ts) {
 		time = 0;
 		set = ts;
@@ -46,17 +42,20 @@ public class RateMonotonic extends ScheduleAlgo{
 	 * runs a single timestep of the algorithm and outputs the task that ran.
 	 * */
 	@Override
-	public int incrementTime() throws TaskOverloadException, TaskDoesNotExistException {
+	public int incrementTime() throws TaskOverloadException, TaskDoesNotExistException {	
 		// TODO Auto-generated method stub
 		for(int i = 0; i < set.getCount(); i++) {
 			Task t = set.getTaskAtIndex(i);
-			if(t.getOffset() == time) {
+			if(t.getOffset() == this.time) {
+				if(this.time == 1) {
+					System.out.println("TIME IS ZERO");
+				}
 				set.activateTask(t.getId());
 			}
 		}
 		
 		int id = 0;
-		time++;
+		this.time+=1;
 		Task t = pickTask();
 		if(t != null) {
 			id = t.getId();
@@ -71,6 +70,8 @@ public class RateMonotonic extends ScheduleAlgo{
 	public boolean isSchedulable() {
 		// TODO Auto-generated method stub
 		System.out.println("NOT IMPLEMENTED YET");
+		
+		
 		return true;
 	}
 
@@ -78,6 +79,10 @@ public class RateMonotonic extends ScheduleAlgo{
 	public void reset() {
 		// TODO Auto-generated method stub
 		System.out.println("NOT IMPLEMENTED YET");
+	}
+	
+	public static void main(String [] args) {
+		System.out.println("rebuild");
 	}
 
 	
