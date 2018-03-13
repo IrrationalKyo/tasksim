@@ -1,21 +1,15 @@
 package edu.kim.kyo.tasksim;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.LinkedList;
-
 import edu.kim.kyo.tasksim.schedulealgo.RateMonotonic;
+
+import java.io.*;
+import java.util.LinkedList;
 
 /**
  * Hello world!
  *
  */
-public class App {
+public class SequenceApp {
 	public static File[] finder(String dirName) {
 		File dir = new File(dirName);
 
@@ -176,7 +170,7 @@ public class App {
 	public static void outputTraceSingleFile(int duration, String inputFileDir, String outputFileDir)
 			throws TaskDoesNotExistException, FileNotFoundException, TaskOverloadException {
 		TaskSet ts = oldFormatMetaParser(inputFileDir);
-		Simulator sim = new Simulator(new RateMonotonic(ts), duration);
+		SequenceSimulator sim = new SequenceSimulator(new RateMonotonic(ts), duration);
 		try {
 			sim.run();
 		} catch (TaskOverloadException e) {
@@ -251,13 +245,9 @@ public class App {
 		//	System.out.println("id:" + i + "=" + l[i]);
 		//
 		//}
-
-		/*
-		* 	TODO: ID IS THE PRIORITY !
-		* */
 		String inputFolderDir = "";
 		String outputFolderDir = "";
-		int duration = 200000;
+		int duration = 2500;
 		
 		if(!(args.length <= 3 && args.length >= 2)) {
 			throw new IllegalArgumentException("Expects 3 argument. args[0] = inputFolderDir. args[1] = outputFolderDir. args[2] = ");

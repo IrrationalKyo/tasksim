@@ -116,6 +116,7 @@ public class IntervalApp {
 							break;
 						case "pri":
 							priority = Integer.parseInt(param[1].trim());
+							id = priority;
 							break;
 						case "offset":
 							offset = Integer.parseInt(param[1].trim());
